@@ -68,6 +68,14 @@ namespace LinkedList
             return this->size;
         }
 
+        ~Singly()
+        {
+            while (!this->isEmpty())
+            {
+                this->deleteAtStart();
+            }
+        }
+
     private:
         DataType data;
         Singly<DataType> *next;
@@ -337,6 +345,14 @@ namespace LinkedList
         DataType deleteAtStart() override;
         DataType deleteAtEnd() override;
         DataType deleteAtPosition(int pos) override;
+
+        ~Circular()
+        {
+            while (!this->isEmpty())
+            {
+                this->deleteAtStart();
+            }
+        }
 
     private:
         DataType data;
