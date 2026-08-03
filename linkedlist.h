@@ -325,6 +325,11 @@ namespace LinkedList
         DataType peek(int position) override;
         void traverse() override;
 
+        int getSize()
+        {
+            return this->size;
+        }
+
         void insertAtStart(const DataType &data) override;
         void insertAtEnd(const DataType &data) override;
         void insertAtPosition(const DataType &data, int pos) override;
@@ -462,7 +467,7 @@ namespace LinkedList
         Circular<T> *newNode = new Circular<T>;
         newNode->data = data;
         Circular<T> *ptr = this->circularHead;
-        
+
         while (ptr->next != this->circularHead)
         {
             ptr = ptr->next;
@@ -538,6 +543,7 @@ namespace LinkedList
 
         T removed_data = q->data;
         delete q;
+        this->size--;
         return removed_data;
     }
 
@@ -568,7 +574,6 @@ namespace LinkedList
             T removed_data = q->data;
 
             delete q;
-
             this->size--;
             return removed_data;
         }

@@ -11,6 +11,6 @@ int main()
     std::cout << "Before sort:" << std::endl;
     utils.printArray(arr);
     sort.bubbleSort(arr);
-    std::cout << "After sort:" << std::endl;
+    std::cout << "After Bubble sort:" << std::endl;
     utils.printArray(arr);
 }
