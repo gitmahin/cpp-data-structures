@@ -102,7 +102,6 @@ namespace LinkedList
             return T();
         }
 
-        // Initialize a pointer for list traversal, starting at the singlyHead.
         Singly<T> *ptr = this->singlyHead;
 
         for (int i = 0; i < index && ptr->next != nullptr; i++)
@@ -157,13 +156,13 @@ namespace LinkedList
     template <typename T>
     void Singly<T>::insertAtStart(const T &data)
     {
-        // Allocate a new node on the heap
+
         Singly<T> *newNode = new Singly<T>;
-        // Initialize the new node's data
+
         newNode->data = data;
-        // Point the new node to the current singlyHead
+
         newNode->next = this->singlyHead;
-        // Reassign the singlyHead pointer to the new starting node
+
         this->singlyHead = newNode;
         this->size++;
     }
@@ -229,16 +228,15 @@ namespace LinkedList
             return T();
         }
 
-        // Save the singlyHead pointer so we can delete the node after unlinking it
         Singly<T> *removedNode = this->singlyHead;
-        // Shift singlyHead to the next node; if singlyHead was the only element, it becomes nullptr
+
         this->singlyHead = this->singlyHead->next;
-        // Buffer the data to return it after the node's memory is freed
+
         T removed_data = removedNode->data;
-        // Prevent memory leaks by deallocating the removed node from the heap
+
         delete removedNode;
         this->size--;
-        // Return the extracted data
+
         return removed_data;
     }
 
@@ -437,8 +435,6 @@ namespace LinkedList
             Circular<T> *ptr = this->circularHead;
             newNode->data = data;
 
-            // You can use while here. I just used this loop and feeling Lazy to
-            // delete, copy, write and .....
             for (int i = 0; i < index - 1 && ptr->next != this->circularHead; i++)
             {
                 ptr = ptr->next;
@@ -464,11 +460,9 @@ namespace LinkedList
         }
 
         Circular<T> *newNode = new Circular<T>;
-
         newNode->data = data;
-
         Circular<T> *ptr = this->circularHead;
-
+        
         while (ptr->next != this->circularHead)
         {
             ptr = ptr->next;
@@ -575,8 +569,6 @@ namespace LinkedList
 
             delete q;
 
-            // Return this function. Otherwise it will run deletion for begin
-            // element.
             this->size--;
             return removed_data;
         }
