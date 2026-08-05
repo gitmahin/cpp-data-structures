@@ -4,7 +4,7 @@
 int main()
 {
     int arr[] = {42, 7, 91, 15, 63, 28, 3, 77, 50, 19};
-    
+
     Sort sort;
     Utils utils;
 

@@ -4,6 +4,20 @@
 
 #pragma once
 
+#ifndef DEBUG
+#define DEBUG 1
+#endif
+
+#if DEBUG == 1
+#ifndef LOG
+#define LOG(x) std::cout << x << std::endl;
+#endif
+#else
+#ifndef LOG
+#define LOG(x)
+#endif
+#endif
+
 #include <iostream>
 #include "utils.h"
 

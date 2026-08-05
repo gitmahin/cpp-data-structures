@@ -7,12 +7,18 @@
 #include <iostream>
 #include <iomanip>
 
-#define DEBUG 0
+#ifndef DEBUG
+#define DEBUG 1
+#endif
 
-#if DEBUG
-#define LOG(x) std::cout << x << std::endl
+#if DEBUG == 1
+#ifndef LOG
+#define LOG(x) std::cout << x << std::endl;
+#endif
 #else
+#ifndef LOG
 #define LOG(x)
+#endif
 #endif
 
 namespace
