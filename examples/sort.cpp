@@ -13,4 +13,12 @@ int main()
     sort.bubbleSort(arr);
     std::cout << "After Bubble sort:" << std::endl;
     utils.printArray(arr);
+
+    sort.insertionSort(arr);
+    std::cout << "After Insertion sort:" << std::endl;
+    utils.printArray(arr);
+
+    sort.selectionSort(arr);
+    std::cout << "After Selection sort:" << std::endl;
+    utils.printArray(arr);
 }

@@ -26,17 +26,21 @@ class Sort
 public:
     template <std::size_t n>
     void bubbleSort(int (&arr)[n]);
-};
 
+    template <std::size_t n>
+    void insertionSort(int (&arr)[n]);
+
+    template <std::size_t n>
+    void selectionSort(int (&arr)[n]);
+};
 
 template <std::size_t n>
 void Sort::bubbleSort(int (&arr)[n])
 {
-    unsigned int size = std::size(arr);
-    int temp_element;
-    bool is_sorted = true;
-
     Utils utils;
+    unsigned int size = std::size(arr);
+
+    bool is_sorted = true;
 
     for (int i = 0; i < size - 1; i++)
     {
@@ -54,3 +58,44 @@ void Sort::bubbleSort(int (&arr)[n])
     }
 }
 
+template <std::size_t n>
+void Sort::insertionSort(int (&arr)[n])
+{
+    Utils utils;
+    unsigned int size = std::size(arr);
+    int key, j;
+
+    for (int i = 1; i <= size - 1; i++)
+    {
+        key = arr[i];
+        j = i - 1;
+
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+template <std::size_t n>
+void Sort::selectionSort(int (&arr)[n])
+{
+    Utils utils;
+    int min_index;
+    unsigned int size = std::size(arr);
+
+    for (int i = 0; i < size; i++)
+    {
+        min_index = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[j] < arr[min_index])
+            {
+                min_index = j;
+            }
+        }
+        utils.swap(arr[i], arr[min_index]);
+    }
+}
