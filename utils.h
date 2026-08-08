@@ -8,13 +8,18 @@
 class Utils
 {
 public:
-    template <std::size_t n>
-    void printArray(int (&arr)[n]);
-    void swap(int &a, int &b);
+    template <std::size_t n, typename T>
+    void printArray(const T (&arr)[n]);
+
+    template <typename T>
+    void printArray(const T *arr, int size);
+
+    template <typename T>
+    void swap(T &a, T &b);
 };
 
-template <std::size_t n>
-void Utils::printArray(int (&arr)[n])
+template <std::size_t n, typename T>
+void Utils::printArray(const T (&arr)[n])
 {
     unsigned int size = std::size(arr);
     for (int i = 0; i < size; i++)
@@ -24,9 +29,20 @@ void Utils::printArray(int (&arr)[n])
     std::cout << std::endl;
 }
 
-void Utils::swap(int &a, int &b)
+template <typename T>
+void Utils::printArray(const T *arr, int size)
 {
-    int temp = a;
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+template <typename T>
+void Utils::swap(T &a, T &b)
+{
+    T temp = a;
     a = b;
     b = temp;
 }
