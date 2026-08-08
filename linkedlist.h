@@ -27,10 +27,10 @@ namespace
     class ILinkedList
     {
     public:
-        virtual bool isEmpty() = 0;
+        virtual const bool isEmpty() const = 0;
 
         virtual void traverse() = 0;
-        virtual DataType peek(int position) = 0;
+        virtual const DataType &peek(int position) const = 0;
 
         int size = 0;
 
@@ -56,9 +56,9 @@ namespace LinkedList
     public:
         Singly<DataType> *singlyHead = nullptr;
 
-        bool isEmpty() override;
+        const bool isEmpty() const override;
 
-        DataType peek(int position) override;
+        const DataType &peek(int position) const override;
         void traverse() override;
 
         void insertAtStart(const DataType &data) override;
@@ -88,7 +88,7 @@ namespace LinkedList
     };
 
     template <typename T>
-    bool Singly<T>::isEmpty()
+    const bool Singly<T>::isEmpty() const
     {
         // The list is considered empty if the singlyHead pointer does not reference a node on the heap.
         if (this->singlyHead == nullptr)
@@ -100,20 +100,22 @@ namespace LinkedList
     }
 
     template <typename T>
-    T Singly<T>::peek(int pos)
+    const T &Singly<T>::peek(int pos) const
     {
 
         if (this->isEmpty())
         {
             LOG("Empty Singular Linked List!");
-            return T();
+            static const T empty{};
+            return empty;
         }
 
         int index = pos - 1;
         if (index < 0)
         {
             LOG("Invalid peek position");
-            return T();
+            static const T empty{};
+            return empty;
         }
 
         Singly<T> *ptr = this->singlyHead;
@@ -334,9 +336,9 @@ namespace LinkedList
     public:
         Circular<DataType> *circularHead = nullptr;
 
-        bool isEmpty() override;
+        const bool isEmpty() const override;
 
-        DataType peek(int position) override;
+        const DataType &peek(int position) const override;
         void traverse() override;
 
         int getSize()
@@ -366,7 +368,7 @@ namespace LinkedList
     };
 
     template <typename T>
-    bool Circular<T>::isEmpty()
+    const bool Circular<T>::isEmpty() const
     {
         // The list is considered empty if the circularHead pointer does not reference a node on the heap.
         if (this->circularHead == nullptr)
@@ -447,9 +449,10 @@ namespace LinkedList
     }
 
     template <typename T>
-    T Circular<T>::peek(int pos)
+    const T &Circular<T>::peek(int pos) const
     {
-        return T();
+        static const T empty{};
+        return empty;
     }
 
     template <typename T>

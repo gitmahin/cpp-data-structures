@@ -25,22 +25,19 @@ template <typename T>
 class Stack
 {
 public:
-    Stack(const int size) : size(size), top(-1)
-    {
-        this->data = new T[size];
-    };
+    Stack(const int size) : size(size), top(-1), data(new T[size]) {};
 
     ~Stack()
     {
         delete[] this->data;
     }
 
-    void push(T data);
+    void push(const T &data);
     T pop();
-    bool isEmpty();
-    bool isFull();
-    T htop();
-    int getSize();
+    const bool isEmpty() const;
+    const bool isFull() const;
+    const T &htop() const;
+    const int getSize() const;
     void traverse();
 
 private:
@@ -50,7 +47,7 @@ private:
 };
 
 template <typename T>
-bool Stack<T>::isEmpty()
+const bool Stack<T>::isEmpty() const
 {
     if (this->top == -1)
     {
@@ -61,7 +58,7 @@ bool Stack<T>::isEmpty()
 }
 
 template <typename T>
-bool Stack<T>::isFull()
+const bool Stack<T>::isFull() const
 {
     if (this->top == this->size - 1)
     {
@@ -71,7 +68,7 @@ bool Stack<T>::isFull()
 }
 
 template <typename T>
-void Stack<T>::push(T data)
+void Stack<T>::push(const T &data)
 {
 
     if (!this->data)
@@ -113,26 +110,28 @@ T Stack<T>::pop()
 }
 
 template <typename T>
-T Stack<T>::htop()
+const T &Stack<T>::htop() const
 {
 
     if (!this->data)
     {
         std::cout << "Stack not created yet!" << std::endl;
-        return T();
+        static const T empty{};
+        return empty;
     }
 
     if (this->isEmpty())
     {
         std::cout << "Stack Underflow!" << std::endl;
-        return T();
+        static const T empty{};
+        return empty;
     }
 
     return this->data[this->top];
 }
 
 template <typename T>
-int Stack<T>::getSize()
+const int Stack<T>::getSize() const
 {
     return this->size;
 }
