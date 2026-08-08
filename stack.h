@@ -25,7 +25,7 @@ template <typename T>
 class Stack
 {
 public:
-    Stack(const int &size) : size(size), top(-1)
+    Stack(const int size) : size(size), top(-1)
     {
         this->data = new T[size];
     };

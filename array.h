@@ -25,16 +25,16 @@ template <typename T>
 class Array
 {
 public:
-    Array(int capacity) : capacity(capacity), rear(-1), data(new T[capacity]) {};
+    Array(const int capacity) : capacity(capacity), rear(-1), data(new T[capacity]) {};
 
     const T *getData() const;
     const int getSize() const;
     bool isFull();
     bool isEmpty();
-    void push(T data);
-    void insertAt(T data, int pos);
-    void insertAtStart(T data);
-    void fill(T data);
+    void push(const T &data);
+    void insertAt(const T &data, int pos);
+    void insertAtStart(const T &data);
+    void fill(const T &data);
     T deleteAt(int pos);
     T deleteAtEnd();
     T deleteAtStart();
@@ -69,7 +69,7 @@ bool Array<T>::isEmpty()
 }
 
 template <typename T>
-void Array<T>::push(T data)
+void Array<T>::push(const T &data)
 {
     if (this->isFull())
     {
@@ -94,7 +94,7 @@ const int Array<T>::getSize() const
 }
 
 template <typename T>
-void Array<T>::insertAtStart(T data)
+void Array<T>::insertAtStart(const T &data)
 {
 
     if (this->isFull())
@@ -112,7 +112,7 @@ void Array<T>::insertAtStart(T data)
 }
 
 template <typename T>
-void Array<T>::insertAt(T data, int pos)
+void Array<T>::insertAt(const T &data, int pos)
 {
     const int index = pos - 1;
 
@@ -207,7 +207,7 @@ T Array<T>::deleteAt(int pos)
 }
 
 template <typename T>
-void Array<T>::fill(T data)
+void Array<T>::fill(const T &data)
 {
     while (!this->isFull())
     {
